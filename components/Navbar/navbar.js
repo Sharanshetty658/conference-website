@@ -108,57 +108,24 @@ function Navbar() {
           ) : (
             <div className="flex items-center">
               {links.map((link) => (
-                <div href={link.ref} key={link.title}>
-                  <div
-                    onMouseEnter={() => handleMouseEnter(link.title)}
-                    onMouseLeave={handleMouseLeave}
-                    className="ml-16 text-[14px] group cursor-pointer relative flex flex-col"
-                    data-test={`nav-${link.title}`}
-                  >
-                    <div>
-                      {link.subMenu ? (
-                        <div className="flex items-center">
-                          {link.title}{" "}
-                          {link.subMenu && (
-                            <Dropdown
-                              color="white"
-                              className={`ml-2 transition-transform duration-700 ${
-                                show === link.title ? "rotate-180" : "rotate-0"
-                              }`}
-                            />
-                          )}
-                        </div>
-                      ) : (
-                        <Link href={link.ref}>{link.title}</Link>
-                      )}
-                    </div>
-                    <span className="after:absolute after:-bottom-1 after:left-1/2 after:w-0 after:transition-all after:h-0.5 after:bg-white after:group-hover:w-3/6  "></span>
-                    <span className="after:absolute after:-bottom-1 after:right-1/2 after:w-0 after:transition-all after:h-0.5 after:bg-white after:group-hover:w-3/6"></span>
-                    {show === link.title && link.subMenu && (
-                      <div
-                        className="subMenu absolute z-[9] mt-8 w-[150px] rounded-md left-[-15px] gradient-bg px-2 py-1 flex flex-col justify-center space-y-0"
-                        onMouseEnter={handleSubMenuEnter}
-                        onMouseLeave={handleSubMenuLeave}
-                      >
-                        {link.subMenu.map((subL) => (
-                          <Link
-                            href={subL.ref}
-                            target={subL.target}
-                            key={subL.title}
-                            rel="noopener noreferrer"
-                          >
-                            <div
-                              className={`flex items-center ${link.subMenu.length === 1 ? "justify-center" : "justify-start"} min-h-[32px] text-[16px] hover:scale-95 hover:translate-x-1 transition-all`}
-                              data-test={`nav-sub-${subL.title}`}
-                            >
-                              {subL.title}
-                            </div>
-                          </Link>
-                        ))}
-                      </div>
-                    )}
-                  </div>
-                </div>
+                <Link
+                href={link.ref}
+                key={link.title}
+                className="mx-4 text-[14px] group cursor-pointer relative flex items-center"
+                data-test={`nav-${link.title}`}
+                onMouseEnter={() => handleMouseEnter(link.title)}
+                onMouseLeave={handleMouseLeave}
+              >
+                {link.title}
+                {link.subMenu && (
+                  <Dropdown
+                    color="white"
+                    className={`ml-2 transition-transform duration-700 ${
+                      show === link.title ? "rotate-180" : "rotate-0"
+                    }`}
+                  />
+                )}
+              </Link>              
               ))}
             </div>
           )}

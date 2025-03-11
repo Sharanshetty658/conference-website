@@ -53,5 +53,9 @@
 	{
 		"title":"Past Editions",
 		"ref":"/editions"
+	},
+	{
+		"title":"Star on GitHub ⭐",
+		"ref":"https://github.com/asyncapi/conference-website"
 	}
 ]

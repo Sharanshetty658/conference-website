@@ -76,6 +76,19 @@ describe("Navbar links", () => {
     }
   });
 
+  it("should navigate to GitHub when clicking 'Star on GitHub'", () => {
+    cy.get('[data-test="nav-Star on GitHub ⭐"]')
+      .should("be.visible")
+      .click();
+  
+    cy.origin("https://github.com", () => {
+      cy.url().should("include", "/asyncapi/conference-website");
+    });
+  });
+  
+  
+  
+
   // To check for mobile view
 
   it("should redirect to about mobile view", () => {
